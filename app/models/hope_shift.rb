@@ -1,0 +1,2 @@
+class HopeShift < ApplicationRecord
+end
