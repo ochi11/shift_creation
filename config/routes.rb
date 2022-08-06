@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
+  resources :events
+  get 'my_calendar', to: 'events#my_calendar'
+
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, controllers: {
