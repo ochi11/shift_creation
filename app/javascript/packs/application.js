@@ -38,6 +38,7 @@ document.addEventListener('turbolinks:load', function() {
         events: '/admin/homes/top.json', // <=これを追加。表示させたい画面に。
         // 書き方のルールとしては['/コントローラー名.json']としてください
 
+
         headerToolbar: {
             // ここ
             start: 'dayGridMonth dayGridWeek timeGridDay',
@@ -53,6 +54,23 @@ document.addEventListener('turbolinks:load', function() {
         },
 
         locale: 'ja',
+
+        selectable: true,
+        selectHelper: true,
+        ignoreTimezone: false,
+        //select: select,
+
+        dateClick: function(info) {
+          alert('Clicked on: ' + info.dateStr);
+          // change the day's background color just for fun
+          //info.dayEl.style.backgroundColor = 'green'; 背景色選択
+        },
+
+        select: function(info) {
+          alert('selected ' + info.startStr + ' to ' + info.endStr);
+        },
+
+
     });
 
     calendar.render();
