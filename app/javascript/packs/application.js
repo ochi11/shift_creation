@@ -60,15 +60,28 @@ document.addEventListener('turbolinks:load', function() {
         ignoreTimezone: false,
         //select: select,
 
-        dateClick: function(info) {
+        /*dateClick: function(info) {
           alert('Clicked on: ' + info.dateStr);
           // change the day's background color just for fun
           //info.dayEl.style.backgroundColor = 'green'; 背景色選択
-        },
+        },*/
 
-        select: function(info) {
-          alert('selected ' + info.startStr + ' to ' + info.endStr);
-        },
+        select: function (info) {
+        //alert("selected " + info.startStr + " to " + info.endStr);
+
+          // 入力ダイアログ
+          const eventName = prompt("イベントを入力してください");
+        
+          if (eventName) {
+            // イベントの追加
+              calendar.addEvent({
+                title: eventName,
+                start: info.start,
+                end: info.end,
+                //allDay: true,
+            });
+        }
+    },
 
 
     });
