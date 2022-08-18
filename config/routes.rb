@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   resources :events
   namespace :admin do
+    resources :shifts
+    resources :end_users
     get 'homes/top'
   end
   namespace :public do
+    resources :shifts
+    resources :end_users
+    resources :hope_shifts
     get 'homes/top'
   end
 
   resources :events
   get 'my_calendar', to: 'events#my_calendar'
+  
+  #resources :shifts
+  #resources :end_users
+  #resources :admins
+  #resources :hope_shifts
 
   # 管理者用
 # URL /admin/sign_in ...

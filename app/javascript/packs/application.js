@@ -58,6 +58,8 @@ document.addEventListener('turbolinks:load', function() {
         selectable: true,
         selectHelper: true,
         ignoreTimezone: false,
+        editable: true,
+        eventLimit: true, 
         //select: select,
 
         /*dateClick: function(info) {
@@ -78,10 +80,21 @@ document.addEventListener('turbolinks:load', function() {
                 title: eventName,
                 start: info.start,
                 end: info.end,
-                //allDay: true,
-            });
+                allDay: false,
+            }); 
         }
-    },
+    }, 
+    
+        /*select: function(start, end) {
+          $*getScript('/events/new', function() {
+            $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
+            date_range_picker();
+            $('.start_hidden').val(moment(start).format("MM/DD/YYYY HH:mm"));
+            $('.end_hidden').val(moment(end).format("MM/DD/YYYY HH:mm"));
+          });
+          
+          calendar.fullCalendar('unselect');
+        }*/
 
 
     });

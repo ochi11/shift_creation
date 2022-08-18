@@ -4,6 +4,9 @@ class CreateHopeShifts < ActiveRecord::Migration[6.1]
       t.integer :shift_id, null: false
       t.integer :end_user_id, null: false
       t.boolean :is_active, null: false, default: true #シフトの確定フラグ
+      t.integer :working_time_start, null: false
+      t.integer :working_time_end, null: false
+      t.date :date, null: false
 
       t.timestamps
     end
