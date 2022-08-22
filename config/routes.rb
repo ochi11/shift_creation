@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :events
   get 'my_calendar', to: 'events#my_calendar'
+  get '/end_users/my_page' => 'public/end_users#index'
   
   #resources :shifts
   #resources :end_users
