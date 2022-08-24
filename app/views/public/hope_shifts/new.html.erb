@@ -1,0 +1,11 @@
+<h2>hope_shift</h2>
+<%= form_with model: @hope_shift, url:public_hope_shifts_path, method: :post do |f| %>
+  <%= f.date_select :date, {}, class: 'form-control' %>
+  <%= f.datetime_select :start_date, {}, class: 'form-control' %>
+
+  <%= f.datetime_select :end_date, {}, class: 'form-control' %>
+
+  <%= f.number_field :working_time_start, in: 0..24 %>
+  <%= f.number_field :working_time_end, in: 0..24 %>
+  <%= f.submit "送信" %>
+<% end %>

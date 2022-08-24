@@ -1,7 +1,7 @@
 <h2>編集ページ</h2>
 <div class="edit-container" style="width:50%; margin: 20px auto; position: relative;">
   <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">会員情報編集</h4>
-<%= form_with model: @end_user, url:public_end_users_path, method: :patch do |f| %>
+<%= form_with model: @end_user, url:public_end_user_path(@end_user), method: :patch do |f| %>
 
     <div class="row" style="height: 20px;"></div>
 

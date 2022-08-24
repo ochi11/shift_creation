@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_18_125703) do
+ActiveRecord::Schema.define(version: 2022_08_24_134311) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
@@ -49,15 +49,20 @@ ActiveRecord::Schema.define(version: 2022_08_18_125703) do
   end
 
   create_table "hope_shifts", force: :cascade do |t|
-    t.integer "shift_id", null: false
     t.integer "end_user_id", null: false
     t.boolean "is_active", default: true, null: false
+    t.integer "working_time_start", null: false
+    t.integer "working_time_end", null: false
+    t.date "date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "shifts", force: :cascade do |t|
     t.integer "admin_id", null: false
+    t.integer "hope_shift_id", null: false
     t.integer "working_time_start", null: false
     t.integer "working_time_end", null: false
     t.integer "break_time_start", null: false

@@ -35,9 +35,8 @@ document.addEventListener('turbolinks:load', function() {
         plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
         //~省略~//
 
-        events: '/admin/homes/top.json', // <=これを追加。表示させたい画面に。
+        //events: '/hope_shifts.json', // <=これを追加。表示させたい画面に。
         // 書き方のルールとしては['/コントローラー名.json']としてください
-
 
         headerToolbar: {
             // ここ
@@ -99,7 +98,7 @@ document.addEventListener('turbolinks:load', function() {
 
     });
 
-    calendar.render();
+    
 
   calendar.render();
 });
