@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :events
+  #get '/' => 'homes#top'
   get 'my_calendar', to: 'events#my_calendar'
   get '/end_users/my_page' => 'public/end_users#index'
+  get '/end_users/edit' => 'public/end_users#edit'
   
   #resources :shifts
   #resources :end_users
