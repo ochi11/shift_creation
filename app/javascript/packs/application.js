@@ -20,22 +20,14 @@ import monthGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
-document.addEventListener('turbolinks:load', function() {
-  /* var calendarEl = document.getElementById('calendar');
-
-  var calendar = new Calendar(calendarEl, {
-    plugins: [ monthGridPlugin, dayGridPlugin, interactionPlugin ]
-  });
-*/
-
-
+  document.addEventListener('turbolinks:load', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new Calendar(calendarEl, {
         plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
         //~省略~//
 
-        //events: '/hope_shifts.json', // <=これを追加。表示させたい画面に。
+        events: '/public/hope_shifts.json', // <=これを追加。表示させたい画面に。
         // 書き方のルールとしては['/コントローラー名.json']としてください
 
         headerToolbar: {
@@ -101,4 +93,4 @@ document.addEventListener('turbolinks:load', function() {
     
 
   calendar.render();
-});
+  });
