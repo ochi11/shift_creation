@@ -1,1 +1,31 @@
-<h1>test</h1>
+<!-- 希望シフト一覧画面 -->
+<div class="row" style="width:60%; margin:0 auto;">
+<h4>希望シフト一覧</h4>
+  <%= form_with model: @shift, url:admin_shifts_path do |f| %>
+    <table class="table table-bordered">
+    	<tr>
+    		<th>希望者</th>
+    		<th>希望日時</th>
+    		<th>労働開始時間</th>
+    		<th>労働終了時間</th>
+    	</tr>
+  
+      <% @hope_shifts.each do |hope_shift| %>
+    	<tr>
+    		<td><%= hope_shift.end_user.name %></td>
+          <td><%= hope_shift.date %></td>
+          <td><%= hope_shift.working_time_start %></td>
+          <td><%= hope_shift.working_time_end %></td>
+          <td>
+            <%#= f.submit '登録', class:"btn btn-info btn-md" %>
+            <%= link_to "登録", copy_shift_admin_shifts_path(hope_shift_id: hope_shift.id) %>
+
+
+          </td>
+          <td><%= link_to "編集", edit_admin_shift_path(hope_shift.id) %></td>
+          <td><%= link_to "削除する", edit_admin_shift_path(hope_shift.id) %></td>
+    	 </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

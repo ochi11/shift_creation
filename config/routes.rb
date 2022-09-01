@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :events
   namespace :admin do
-    resources :shifts
+    resources :shifts do
+      collection do
+        get :copy_shift
+      end
+    end
     resources :end_users
+    resources :hope_shifts
     get 'homes/top'
   end
   namespace :public do
