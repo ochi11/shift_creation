@@ -18,12 +18,12 @@
           <td><%= hope_shift.working_time_end %></td>
           <td>
             <%#= f.submit '登録', class:"btn btn-info btn-md" %>
-            <%= link_to "登録", copy_shift_admin_shifts_path(hope_shift_id: hope_shift.id) %>
+            <%= link_to "登録", admin_hope_shift_active_path(hope_shift_id: hope_shift.id) %>
 
 
           </td>
-          <td><%= link_to "編集", edit_admin_shift_path(hope_shift.id) %></td>
-          <td><%= link_to "削除する", edit_admin_shift_path(hope_shift.id) %></td>
+          <td><%= link_to "編集", edit_admin_hope_shift_path(hope_shift.id) %></td>
+          <td><%= link_to "削除する", admin_hope_shift_path(hope_shift.id), method: :delete %></td>
     	 </tr>
       <% end %>
     </table>

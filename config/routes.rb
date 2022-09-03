@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       end
     end
     resources :end_users
-    resources :hope_shifts
+    resources :hope_shifts do
+      get '/active', to: 'hope_shifts#active'
+    end
     get 'homes/top'
   end
   namespace :public do
