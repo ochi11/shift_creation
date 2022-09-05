@@ -1,11 +1,11 @@
 class Admin::ShiftsController < ApplicationController
     def index
-     @hope_shifts = HopeShift.where(is_active: true) # これで仮確定してないシフト希望を取得
+     @hope_shifts = HopeShift.where(is_active: false) # これで仮確定しているシフト希望を取得
      @shift = Shift.new
     end
     
     def edit
-     @shift = Shift.find(params[:id])
+     @hope_shift = HopeShift.find(params[:id])
     end
     
     def create
@@ -26,7 +26,7 @@ class Admin::ShiftsController < ApplicationController
           redirect_to admin_shifts_path
         else
           flash[:warning] = "入力内容を確認してください"
-          render :index
+          redirect_to edit_admin_shift_path
         end
     end
     
