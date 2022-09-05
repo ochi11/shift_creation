@@ -1,7 +1,7 @@
 <!-- 仮確定シフト一覧画面 -->
 <div class="row" style="width:60%; margin:0 auto;">
 <h4>仮確定シフト一覧</h4>
-  <%= form_with model: @shift, url:admin_shifts_path do |f| %>
+  <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>
     <table class="table table-bordered">
     	<tr>
     		<th>希望者</th>
@@ -23,8 +23,8 @@
           <td><%= @shift.break_time_start %></td>
           <td><%= @shift.break_time_end %></td>
           <td>
-            <%#= f.submit '登録', class:"btn btn-info btn-md" %>
-            <%= link_to "本登録", admin_shifts_path(@shift.id), methed: :post %>
+            <%= f.submit '登録', class:"btn btn-info btn-md" %>
+            <%#= link_to "本登録", admin_shifts_path(@shift.id), methed: :post %>
 
 
           </td>

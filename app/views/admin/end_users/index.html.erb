@@ -1,0 +1,30 @@
+<div class="row" style="width:60%; margin:0 auto;">
+<h4>従業員一覧</h4>
+
+<table class="table table-bordered">
+	<tr>
+		<th>従業員ID</th>
+		<th>氏名</th>
+		<th>メールアドレス</th>
+		<th>就業ステータス</th>
+	</tr>
+	<% @end_users.each do |end_user| %>
+	<tr>
+		<td><%= end_user.id %></td>
+		<td>
+			<%= link_to admin_end_user_path(end_user.id) do %>
+				<%= end_user.name %>
+			<% end %>
+		</td>
+		<td><%= end_user.email %></td>
+		
+		<!-- 就業中なら有効、退職した方は退会。 -->
+		<% if end_user.is_deleted == false %>
+			<td><span class="badge" style="background:green">有効</span></td>
+		<% else %>
+			<td><span class="badge" style="background:red">退会</span></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+</div>

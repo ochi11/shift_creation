@@ -18,14 +18,14 @@
 	</table>
 
 	<hr>
-	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h4>
-		<%= link_to do %>
-			一覧を見る<span class="glyphicon glyphicon-chevron-right"></span>
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの閲覧</h4>
+		<%= link_to public_shifts_path do %>
+			見る<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
-	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴</h4>
-		<%= link_to do %>
-			一覧を見る<span class="glyphicon glyphicon-chevron-right"></span>
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフト希望日時提出</h4>
+		<%= link_to new_public_hope_shift_path do %>
+			提出する<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
 </div>

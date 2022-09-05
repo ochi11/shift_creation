@@ -4,18 +4,22 @@ class Admin::ShiftsController < ApplicationController
      @shift = Shift.new
     end
     
+    def show
+     @hope_shift = HopeShift.find(params[:id])
+    end
+    
     def edit
      @hope_shift = HopeShift.find(params[:id])
     end
     
     def create
-        @shift = shift.new(shift_params)
+      　@shift = shift.new(shift_params)
         if @shift.save
           flash[:success] = "登録に成功しました"
           redirect_to admin_shifts_path(@shift.id)
         else
           flash[:warning] = "入力内容を確認してください"
-          render :index
+          redirect_to admin_shifts_path(@shift.id)
         end
     end
     

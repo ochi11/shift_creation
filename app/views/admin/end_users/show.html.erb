@@ -1,0 +1,36 @@
+<div class="show-container" style="width:50%; margin: 20px auto;">
+
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;"><%= @end_user.name %>さんの従業員詳細</h4>
+
+<table class="table table-condensed">
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">従業員ID</th>
+		<td><%= @end_user.id %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">氏名</th>
+		<td><%= @end_user.name %></td>
+	</tr>
+	<tr>
+		<th style="background: #dad7d7; border-bottom: 1px solid #fff;">メールアドレス</th>
+		<td style="border-bottom: 1px solid #dad7d7;"><%= @end_user.email %></td>
+	</tr>
+	<tr>
+	    <!-- 就業中なら有効、退職した方は退会。 -->
+	    <th style="background: #dad7d7; border-bottom: 1px solid #fff;">就業ステータス</th>
+			<td>
+		<% @end_user.id %>
+		<% if @end_user.is_deleted == false %>
+			<td><span class="badge" style="background:green">有効</span></td>
+		<% else %>
+			<td><span class="badge" style="background:red">退会</span></td>
+		<% end %>
+		</td>
+	</tr>
+</table>
+<hr>
+		<%= link_to edit_admin_end_user_path do %>
+					<span class="btn btn-info" style="display:inline-block;">編集する</span>
+		<% end %>
+
+</div>

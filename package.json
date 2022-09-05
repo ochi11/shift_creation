@@ -2,6 +2,7 @@
   "name": "shift-creation",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.4",
     "@fullcalendar/core": "^5.11.2",
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/interaction": "^5.11.2",

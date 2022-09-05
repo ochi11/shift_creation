@@ -11,7 +11,8 @@
      <%= form_with model: @shift, url:admin_shift_path, method: :patch do |f| %>
     　<%= f.number_field :break_time_start, in: 0..24 %>
       <%= f.number_field :break_time_end, in: 0..24 %>
+        <%= f.submit "更新" %>
      <% end %>
   
-  <%= f.submit "更新" %>
+
 <% end %>

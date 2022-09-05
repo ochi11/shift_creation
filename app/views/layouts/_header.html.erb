@@ -1,0 +1,40 @@
+<body>
+       <div id="header" style="border-bottom:1px solid #dad7d7">
+
+      <!-- 退会済みユーザーの場合は表示を変える。 -->
+      	<% if end_user_signed_in? && current_end_user.is_deleted %>
+      			<p style="text-align:right; padding: 10px 10px 0 0; color:#694D49;">
+      				あなたは退会済みです
+      			</p>
+      	<% elsif end_user_signed_in? && !current_end_user.is_deleted %>
+      			<p style="text-align:right; padding: 10px 10px 0 0; color:#694D49;">
+      				ようこそ、
+      				<%= link_to current_end_user.name, public_end_users_path %>
+      				さん
+      			</p>
+      	<% end %>
+      <div id="box" style="margin: 0 auto 20px; text-align: center;">
+        <% if end_user_signed_in? && current_end_user %>
+        <!-- ログイン時表示される内容-->
+          <%= link_to "マイページ", public_end_users_path, class:"btn btn-primary text-dark bg-light" %>
+          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+        <% else %>
+        <!-- ログアウト時に表示される内容 -->
+          <li>
+            <%= link_to "新規登録", new_end_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_end_user_session_path %>
+          </li>
+        <% end %>
+        
+        <% if admin_signed_in? %>
+        	<%= link_to admin_homes_top_path do %>
+				<%= current_admin.name %> (管理者ページ)
+			<% end %>
+			<= 管理者ログイン中
+         <% end %>
+      </div>
+    </div>  
+    
+</body>
