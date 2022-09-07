@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :end_users
     resources :hope_shifts do
       get '/active', to: 'hope_shifts#active'
+      patch :copy_update
     end
     get 'homes/top'
   end

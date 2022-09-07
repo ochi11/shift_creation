@@ -9,14 +9,27 @@ class Admin::HopeShiftsController < ApplicationController
         @hope_shift = HopeShift.find(params["id"])
     end
 
-    def update
-        @hope_shift = HopeShift.find(params["id"])
-        if @hope_shift.update(hope_shift_params)
+    def copy_update #仮登録から本登録する際の記述
+#        @hope_shift = HopeShift.find(params["id"])
+
+        shift = Shift.new
+        shift.admin_id = current_admin.id
+        shift.hope_shift_id = params[:hope_shift_id]
+        shift.working_time_start = params[:hope_shift][:working_time_start]
+        shift.working_time_end = params[:hope_shift][:working_time_end]
+        if params[:hope_shift][:shift].present?
+          shift.break_time_start = params[:hope_shift][:shift][:break_time_start] 
+          shift.break_time_end = params[:hope_shift][:shift][:break_time_end]
+        end
+        date = Date.new(params[:hope_shift]["date(1i)"].to_i, params[:hope_shift]["date(2i)"].to_i, params[:hope_shift]["date(3i)"].to_i)
+        shift.date = date
+#        if @hope_shift.update(hope_shift_params)
+       if shift.save
           flash[:success] = "更新に成功しました"
-          redirect_to admin_hope_shifts_path
+          redirect_to admin_shifts_path
         else
           flash[:warning] = "入力内容を確認してください"
-          redirect_to edit_admin_hope_shift_path
+          redirect_to edit_admin_shift_path(params[:hope_shift_id])
         end
     end
     
