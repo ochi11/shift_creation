@@ -9,7 +9,7 @@ class Admin::HopeShiftsController < ApplicationController
         @hope_shift = HopeShift.find(params["id"])
     end
 
-    def copy_update #仮登録から本登録する際の記述
+    def copy_update #仮登録のシフトを編集する際の記述
 #        @hope_shift = HopeShift.find(params["id"])
 
         shift = Shift.new

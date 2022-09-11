@@ -17,16 +17,14 @@
       <% @hope_shifts.each do |hope_shift| %>
     	<tr>
     		<td><%= hope_shift.end_user.name %></td>
-          <td><%= hope_shift.date %></td>
-          <td><%= hope_shift.working_time_start %></td>
-          <td><%= hope_shift.working_time_end %></td>
-          <% if hope_shift.shifts.first.present? then %>
-            <td><%= hope_shift.shifts.first.break_time_start %></td>
-            <td><%= hope_shift.shifts.first.break_time_end %></td>
-          <% else %>
-            <td></td>
-            <td></td>
-          <% end %>
+          <td><%= hope_shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
+          <td><%= hope_shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @hope_shift_working_time_start %></td>
+          <td><%= hope_shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @hope_shift_working_time_end %></td>
+          <%# if hope_shift.shifts.first.present? then %>
+            <td><%= f.number_field :break_time_start, in: 0..24 %></td>
+            <td><%= f.number_field :break_time_end, in: 0..24 %></td>
+          <%# else %>
+          <%# end %>
           <td>
             <%= f.submit '登録', class:"btn btn-info btn-md" %>
             <%#= link_to "本登録", admin_shifts_path(@shift.id), methed: :post %>

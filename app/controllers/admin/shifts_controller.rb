@@ -1,7 +1,12 @@
 class Admin::ShiftsController < ApplicationController
     def index
-     @hope_shifts = HopeShift.where(is_active: false) # これで仮確定しているシフト希望を取得
+     @hope_shifts = HopeShift.where(is_active: false).where(is_registered: false) # これで仮確定しているシフト希望を取得
      @shift = Shift.new
+     @hope_shifts.each do |hope_shift|
+       @hope_shift_working_time_start = hope_shift.working_time_start
+       @hope_shift_working_time_end = hope_shift.working_time_end
+       @hope_shift_date = hope_shift.date
+     end
     end
     
     def show
@@ -13,7 +18,7 @@ class Admin::ShiftsController < ApplicationController
     end
     
     def create
-      　@shift = shift.new(shift_params)
+        @shift = Shift.new(shift_params)
         if @shift.save
           flash[:success] = "登録に成功しました"
           redirect_to admin_shifts_path(@shift.id)

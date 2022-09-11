@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :shifts do
       collection do
-        get :copy_shift
+        get :copy_shift #データの受け渡し
+        get :confirmed_shift #確定されたシフトを表示させるメソッド
       end
     end
     resources :end_users
