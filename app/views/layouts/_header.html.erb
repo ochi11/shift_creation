@@ -1,5 +1,9 @@
 <body>
        <div id="header" style="border-bottom:1px solid #dad7d7">
+         
+      <%= link_to root_path do %>
+      		<h1>NewShift</h1>
+      <% end %>
 
       <!-- 退会済みユーザーの場合は表示を変える。 -->
       	<% if end_user_signed_in? && current_end_user.is_deleted %>

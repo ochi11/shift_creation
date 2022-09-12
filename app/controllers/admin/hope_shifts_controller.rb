@@ -27,10 +27,10 @@ class Admin::HopeShiftsController < ApplicationController
        if shift.save
           flash[:success] = "更新に成功しました"
           redirect_to admin_shifts_path
-        else
+       else
           flash[:warning] = "入力内容を確認してください"
           redirect_to edit_admin_shift_path(params[:hope_shift_id])
-        end
+       end
     end
     
     def active

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get :copy_shift #データの受け渡し
         get :confirmed_shift #確定されたシフトを表示させるメソッド
       end
+      get '/registered', to: 'hope_shifts#registered'
     end
     resources :end_users
     resources :hope_shifts do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get 'my_calendar', to: 'events#my_calendar'
   get '/end_users/my_page' => 'public/end_users#index'
   get '/end_users/edit' => 'public/end_users#edit'
+  root to: 'top#index'
   
   #resources :shifts
   #resources :end_users

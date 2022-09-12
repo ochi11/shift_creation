@@ -1,6 +1,6 @@
-<!-- 仮確定シフト一覧画面 -->
+<!-- 確定シフト一覧画面 -->
 <div class="row" style="width:60%; margin:0 auto;">
-<h4>仮確定シフト一覧</h4>
+<h4>確定シフト一覧</h4>
   <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>
     <table class="table table-bordered">
     	<tr>
@@ -8,24 +8,20 @@
     		<th>希望日時</th>
     		<th>労働開始時間</th>
     		<th>労働終了時間</th>
-    		
-    		<!-- 休憩時間は空欄がデフォルトです。このページで設定してください -->
     		<th>休憩開始時間</th>
     		<th>休憩終了時間</th>
     	</tr>
   
-      <% @hope_shifts.each do |hope_shift| %>
+      <% @shifts.each do |shift| %>
     	<tr>
-    		<td><%= hope_shift.end_user.name %></td>
-          <td><%= hope_shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
-          <td><%= hope_shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @hope_shift_working_time_start %></td>
-          <td><%= hope_shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @hope_shift_working_time_end %></td>
+    		<td><%= shift.end_user.name %></td>
+          <td><%= shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
+          <td><%= shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @shift_working_time_start %></td>
+          <td><%= shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @shift_working_time_end %></td>
           <%# if hope_shift.shifts.first.present? then %>
-            <td><%= f.number_field :break_time_start, in: 0..24 %></td>
-            <td><%= f.number_field :break_time_end, in: 0..24 %></td>
+            <td><%= shift_break_time_start %> <%= f.hidden_field :break_time_start, :value => @shift_break_time_start %></td>
+            <td><%= shift_break_time_end %> <%= f.hidden_field :break_time_end, :value => @shift_break_time_end %></td>
           <%# else %>
-            <td></td>
-            <td></td>
           <%# end %>
           <td>
             <%= f.submit '登録', class:"btn btn-info btn-md" %>
@@ -39,4 +35,4 @@
       <% end %>
     </table>
   <% end %>
-</div>
+</div>>
