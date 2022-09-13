@@ -46,6 +46,27 @@ class Admin::HopeShiftsController < ApplicationController
         end 
     end
     
+    def registered
+        #byebug
+      @hope_shift = HopeShift.find(params["hope_shift_id"])
+      @hope_shift.is_registered = true # 確定
+      if @hope_shift.update(is_registered: true)
+        Shift.create!(hope_shift_id: @hope_shift.id,
+                      admin_id: current_admin.id,
+                      working_time_start: @hope_shift.working_time_start,
+                      working_time_end: @hope_shift.working_time_end,
+                      date: @hope_shift.date,
+                      break_time_start: 10, #params[:break_time_start],
+                      break_time_end: 13 #params[:break_time_end]
+                      )
+        flash[:success] = "更新に成功しました"
+        redirect_to confirmed_shift_admin_shifts_path
+      else
+        flash[:warning] = "入力内容を確認してください"
+        redirect_to admin_shifts_path
+      end
+    end
+    
     def destroy
         @hope_shift = HopeShift.find(params["id"])
         @hope_shift.destroy
@@ -54,6 +75,6 @@ class Admin::HopeShiftsController < ApplicationController
     
         private
     def hope_shift_params
-      params.require(:hope_shift).permit(:end_user_id, :working_time_start, :working_time_end, :is_active, :date)
+      params.require(:hope_shift).permit(:end_user_id, :working_time_start, :working_time_end, :is_active, :is_registered, :date)
     end
 end

@@ -40,10 +40,10 @@ class Admin::ShiftsController < ApplicationController
     end
     
     def registered
-      @shift = Shift.find(params["hope_shift_id"])
-      @shift.hope_shift.is_registered = true # 確定
+      @hope_shift = HopeShift.find(params["hope_shift_id"])
+      @hope_shift.is_registered = true # 確定
       
-      if @shift.update(is_registered: true)
+      if @hope_shift.update(is_registered: true)
         flash[:success] = "更新に成功しました"
         redirect_to confirmed_shift_admin_shifts_path
       else
@@ -53,13 +53,12 @@ class Admin::ShiftsController < ApplicationController
     end
     
     def confirmed_shift
-      @hope_shifts = HopeShift.where(is_registered: true) # これで確定しているシフトを取得
+      @shifts = Shift.where(is_registered: true) # これで確定しているシフトを取得
+      #@shifts = current_end_user.shift
        @shifts.each do |shift|
          @shift_working_time_start = shift.working_time_start
          @shift_working_time_end = shift.working_time_end
          @shift_date = shift.date
-         @shift_break_time_start = shift.break_time_start
-         @shift_break_time_end = shift.break_time_end
        end
     end
     
