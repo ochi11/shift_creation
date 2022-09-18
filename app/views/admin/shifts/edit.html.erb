@@ -1,5 +1,5 @@
 <h1>管理者仮確定シフト編集ページ</h1>
-<%= form_for @hope_shift, url: admin_hope_shift_copy_update_path(@hope_shift.id), method: :patch do |f| %>
+<%= form_for @shift, url: edit_admin_shift_path(@shift.id), method: :patch do |f| %>
   <%= f.date_select :date, {}, class: 'form-control' %>
   <%#= f.datetime_select :start_date, {}, class: 'form-control' %>
 

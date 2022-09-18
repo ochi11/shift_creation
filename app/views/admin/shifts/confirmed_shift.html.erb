@@ -14,7 +14,7 @@
   
       <% @shifts.each do |shift| %>
     	<tr>
-    		<td><%= shift.end_user.name %></td>
+    		<td><%= shift.hope_shift.end_user.name %></td>
           <td><%= shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
           <td><%= shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @shift_working_time_start %></td>
           <td><%= shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @shift_working_time_end %></td>

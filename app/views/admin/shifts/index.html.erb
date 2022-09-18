@@ -1,7 +1,7 @@
 <!-- 仮確定シフト一覧画面 -->
 <div class="row" style="width:60%; margin:0 auto;">
 <h4>仮確定シフト一覧</h4>
-  <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>
+  
     <table class="table table-bordered">
     	<tr>
     		<th>希望者</th>
@@ -15,28 +15,30 @@
     	</tr>
   
       <% @hope_shifts.each do |hope_shift| %>
-    	<tr>
-    		<td><%= hope_shift.end_user.name %></td>
-          <td><%= hope_shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
-          <td><%= hope_shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @hope_shift_working_time_start %></td>
-          <td><%= hope_shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @hope_shift_working_time_end %></td>
-          <%# if hope_shift.shifts.first.present? then %>
-            <td><%= f.number_field :break_time_start, in: 0..24 %></td>
-            <td><%= f.number_field :break_time_end, in: 0..24 %></td>
-          <%# else %>
-            <td></td>
-            <td></td>
-          <%# end %>
-          <td>
-            <%= f.submit '登録', class:"btn btn-info btn-md" %>
-            <%#= link_to "登録", admin_hope_shift_registered_path(hope_shift_id: hope_shift.id) %>
-
-
-          </td>
-          <td><%= link_to "編集", edit_admin_shift_path(hope_shift.id ) %></td>
-          <td><%= link_to "削除する", admin_shift_path(hope_shift.id), method: :delete %></td>
-    	 </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>
+      	<tr>
+      		<td><%= hope_shift.end_user.name %></td>
+      		<%= f.hidden_field :hope_shift_id, :value => hope_shift.id %>
+            <td><%= hope_shift.date %> <%= f.hidden_field :date, :value => @hope_shift_date %></td>
+            <td><%= hope_shift.working_time_start %> <%= f.hidden_field :working_time_start, :value => @hope_shift_working_time_start %></td>
+            <td><%= hope_shift.working_time_end %> <%= f.hidden_field :working_time_end, :value => @hope_shift_working_time_end %></td>
+            <%# if hope_shift.shifts.first.present? then %>
+              <td><%= f.number_field :break_time_start, in: 0..24 %></td>
+              <td><%= f.number_field :break_time_end, in: 0..24 %></td>
+            <%# else %>
+              <td></td>
+              <td></td>
+            <%# end %>
+            <td>
+              <%= f.submit '登録', class:"btn btn-info btn-md" %>
+              <%#= link_to "登録", admin_hope_shift_registered_path(hope_shift_id: hope_shift.id) %>
+  
+  
+            </td>
+            <td><%= link_to "編集", edit_admin_hope_shift_path(hope_shift.id ) %></td>
+            <td><%= link_to "削除する", admin_shift_path(hope_shift.id), method: :delete %></td>
+      	 </tr>
+          <% end %>
+          </table>
+       <% end %>
 </div>
