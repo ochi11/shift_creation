@@ -1,13 +1,26 @@
-<h2>hope_shift</h2>
-<%= form_with model: @hope_shift, url:public_hope_shifts_path, method: :post do |f| %>
-  <%= f.date_select :date, {}, class: 'form-control' %>
-  <%#= f.datetime_select :start_date, {}, class: 'form-control' %>
-
-  <%#= f.datetime_select :end_date, {}, class: 'form-control' %>
-
-  <%= f.number_field :working_time_start, in: 0..24 %>
-  <%= f.number_field :working_time_end, in: 0..24 %>
-  <%= f.submit "送信" %>
-<% end %>
+<div class="container" style = "width: 50%; margin: 20px auto;" >
+  <h2>シフトの希望日時提出フォーム</h2>
+  <%= form_with model: @hope_shift, url:public_hope_shifts_path, method: :post do |f| %>
+    <%#= f.date_select :date, use_month_numbers:true, with_css_classes: true, class: 'form-control' %>
+  <h6 style = "margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px; ">
+    <%= raw sprintf(
+              f.date_select(
+                :date,
+                use_month_numbers: true,
+                default: 1.months.from_now,
+                date_separator: '%s'),
+              '年 ', '月 ') + '日' %>
+  </h6>            
+              
+  <h6 style = "margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px; ">
+    <%= f.number_field :working_time_start, in: 0..23 %> <span>時から</span>
+    <%= f.number_field :working_time_end, in: 0..23 %> <span>時</span>
+     <p>※0~23の数字を入力してください</p>
+    <div class="text-center">
+     <%= f.submit "提出", class:"btn btn-success" %>
+    </div>
+  </h6>
+  <% end %>
+</div>
 
 

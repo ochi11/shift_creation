@@ -1,4 +1,3 @@
-<h2>マイページ</h2>
 <div class="show-container" style="width:50%; margin: 20px auto;">
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">マイページ</h4>
 	<h4>登録情報<%= link_to '編集する', end_users_edit_path(@end_user), class:"btn btn-info" %></h4>
@@ -19,12 +18,12 @@
 
 	<hr>
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの閲覧</h4>
-		<%= link_to public_shifts_path do %>
+		<%= link_to public_shifts_path, class:"btn btn-info" do %>
 			見る<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
-	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフト希望日時提出</h4>
-		<%= link_to new_public_hope_shift_path do %>
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの希望日時提出</h4>
+		<%= link_to new_public_hope_shift_path, class:"btn btn-info" do %>
 			提出する<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>

@@ -1,6 +1,8 @@
 class Public::HopeShiftsController < ApplicationController
   def index
-   @events = HopeShift.all
+   @events = [*HopeShift.all, *Shift.all]
+  # @events = [*HopeShift.last(1), *Shift.last(1)]
+
    @hope_shift = HopeShift.last
   end
 

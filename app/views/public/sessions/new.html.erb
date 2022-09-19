@@ -1,14 +1,16 @@
-<h2>Log in</h2>
+<div class="container" style = "width: 50%; margin: 20px auto;" >
+<h4 style = "margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px; ">ログイン</h4>
+<p style = "margin-bottom: 20px; padding: 10px; ">会員の方はこちらからログインしてください</p>
 
 <%= form_with model: @end_user, url: end_user_session_path do |f| %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, "パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -20,8 +22,16 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<%#= render "public/shared/links" %>
+
+
+  <h4 style="margin-bottom: 20px; padding: 10px;">会員登録がお済みでない方は
+  <%= link_to new_end_user_registration_path do %>
+    <span class="glyphicon glyphicon-chevron-left"><u>こちら</u></span>
+  <% end %>
+  <span>から新規登録を行ってください。</span>
+  </h4>

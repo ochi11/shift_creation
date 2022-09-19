@@ -21,16 +21,12 @@
         <% if end_user_signed_in? && current_end_user %>
         <!-- ログイン時表示される内容-->
           <%= link_to "マイページ", public_end_users_path, class:"btn btn-primary text-dark bg-light" %>
-          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class:"btn btn-primary text-dark bg-light" %>
         <% else %>
         <!-- ログアウト時に表示される内容 -->
-          <li>
-            <%= link_to "新規登録", new_end_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_end_user_session_path %>
-          </li>
-        <% end %>
+          <%= link_to "新規登録", new_end_user_registration_path, class:"btn btn-primary text-dark bg-light" %>
+          <%= link_to "ログイン", new_end_user_session_path, class:"btn btn-primary text-dark bg-light" %>
+         <% end %>
         
         <% if admin_signed_in? %>
         	<%= link_to admin_homes_top_path do %>

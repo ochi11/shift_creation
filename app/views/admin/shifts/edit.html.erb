@@ -1,5 +1,5 @@
 <h1>管理者仮確定シフト編集ページ</h1>
-<%= form_for @shift, url: edit_admin_shift_path(@shift.id), method: :patch do |f| %>
+<%= form_for @shift, url: admin_shift_path(@shift.id), method: :patch do |f| %>
   <%= f.date_select :date, {}, class: 'form-control' %>
   <%#= f.datetime_select :start_date, {}, class: 'form-control' %>
 
@@ -14,10 +14,10 @@
         <%#= f.submit "更新" %>
      <%# end %>
   
-  <%= f.fields_for :shift do |s| %>
-    <%= s.number_field :break_time_start, in: 0..24 %>
-    <%= s.number_field :break_time_end, in: 0..24 %>
-  <% end %>
+  <%#= f.fields_for :shift do |s| %>
+    <%= f.number_field :break_time_start, in: 0..24 %>
+    <%= f.number_field :break_time_end, in: 0..24 %>
+  <%# end %>
 
   <%= f.submit "更新" %>
 <% end %>

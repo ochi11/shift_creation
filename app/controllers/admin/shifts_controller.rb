@@ -25,7 +25,7 @@ class Admin::ShiftsController < ApplicationController
           hope_shift = HopeShift.find(@shift.hope_shift_id) 
           hope_shift.update(is_registered: true) # 確定
           flash[:success] = "登録に成功しました"
-          redirect_to admin_shifts_path(@shift.id)
+          redirect_to confirmed_shift_admin_shifts_path(@shift.id)
         else
           flash[:warning] = "入力内容を確認してください"
           redirect_to admin_shifts_path(@shift.id)
@@ -36,10 +36,10 @@ class Admin::ShiftsController < ApplicationController
       @shift = Shift.find(params[:id])
         if @shift.update(shift_params)
           flash[:success] = "更新に成功しました"
-          redirect_to admin_shifts_path
+          redirect_to confirmed_shift_admin_shifts_path
         else
           flash[:warning] = "入力内容を確認してください"
-          redirect_to edit_admin_shift_path
+          redirect_to edit_admin_shift_path(@shift.id)
         end
     end
     
@@ -83,6 +83,12 @@ class Admin::ShiftsController < ApplicationController
           flash[:warning] = "入力内容を確認してください"
           render :index
         end
+    end
+    
+    def destroy
+      @shift = Shift.find(params["id"])
+      @shift.destroy
+      redirect_to confirmed_shift_admin_shifts_path
     end
     
     private
