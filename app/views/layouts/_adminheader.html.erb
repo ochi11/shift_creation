@@ -3,12 +3,20 @@
       		<h1>NewShift</h1>
       <% end %>
 
+      <% if admin_signed_in? %>
+        <p style="text-align:right; padding: 10px 10px 0 0; color:#694D49;">
+      	  ようこそ、
+      		<%= current_admin.name %>
+      		さん
+      	</p>
+      <% end %>
 
       <div id="box" style="margin: 0 auto 20px; text-align: center;">
       <!-- ログイン時表示される内容-->
       <% if admin_signed_in? %>
-          <%= link_to 'ユーザートップページ', public_homes_top_path, class:"btn btn-primary text-dark bg-light" %>
       	  <%= link_to 'シフト作成', admin_hope_shifts_path, class:"btn btn-primary text-dark bg-light" %>
+      	  <%= link_to '仮確定シフト一覧', admin_shifts_path, class:"btn btn-primary text-dark bg-light" %>
+      	  <%= link_to '確定シフト一覧', confirmed_shift_admin_shifts_path, class:"btn btn-primary text-dark bg-light" %>
           <%= link_to '従業員一覧', admin_end_users_path, class:"btn btn-primary text-dark bg-light" %>
       	  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-primary text-dark bg-light" %>
 

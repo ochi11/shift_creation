@@ -57,7 +57,7 @@ class Admin::HopeShiftsController < ApplicationController
         end 
     end
     
-    def registered
+    def registered #いらない？
         #byebug
       @hope_shift = HopeShift.find(params["hope_shift_id"])
       @hope_shift.is_registered = true # 確定
@@ -78,7 +78,7 @@ class Admin::HopeShiftsController < ApplicationController
       end
     end
     
-    def destroy
+    def destroy # 希望シフトと仮確定シフトの削除
         @hope_shift = HopeShift.find(params["id"])
         @hope_shift.destroy
         redirect_to admin_shifts_path

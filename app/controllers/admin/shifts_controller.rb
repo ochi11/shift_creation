@@ -23,7 +23,7 @@ class Admin::ShiftsController < ApplicationController
         
         if @shift.save
           hope_shift = HopeShift.find(@shift.hope_shift_id) 
-          hope_shift.update(is_registered: true) # 確定
+          hope_shift.update(is_registered: true) # 確定したシフトの作成
           flash[:success] = "登録に成功しました"
           redirect_to confirmed_shift_admin_shifts_path(@shift.id)
         else
@@ -43,7 +43,7 @@ class Admin::ShiftsController < ApplicationController
         end
     end
     
-    def registered
+    def registered #いらない？
       @hope_shift = HopeShift.find(params["hope_shift_id"])
       @hope_shift.is_registered = true # 確定
       
@@ -85,7 +85,7 @@ class Admin::ShiftsController < ApplicationController
         end
     end
     
-    def destroy
+    def destroy # 確定シフトの削除
       @shift = Shift.find(params["id"])
       @shift.destroy
       redirect_to confirmed_shift_admin_shifts_path

@@ -36,9 +36,11 @@
   
             </td>
             <td><%= link_to "編集", edit_admin_hope_shift_path(hope_shift.id ) %></td>
-            <td><%= link_to "削除する", admin_shift_path(hope_shift.id), method: :delete %></td>
+            <td><%= link_to "削除する", admin_hope_shift_path(hope_shift.id), method: :delete %></td>
       	 </tr>
           <% end %>
           </table>
        <% end %>
 </div>
+
+<div id="calendar"></div> <!-- カレンダーを特定のページに読み込ませる -->
