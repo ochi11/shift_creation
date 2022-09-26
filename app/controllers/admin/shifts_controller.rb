@@ -18,6 +18,7 @@ class Admin::ShiftsController < ApplicationController
     end
     
     def create
+      #byebug
         @shift = Shift.new(shift_params)
         @shift.admin_id = current_admin.id
         

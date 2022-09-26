@@ -13,7 +13,7 @@ class Admin::HopeShiftsController < ApplicationController
       @hope_shift = HopeShift.find(params[:id])
         if @hope_shift.update(hope_shift_params)
           flash[:success] = "更新に成功しました"
-          redirect_to admin_shifts_path
+          redirect_to admin_hope_shifts_path
         else
           flash[:warning] = "入力内容を確認してください"
           redirect_to edit_admin_hope_shift_path
@@ -21,6 +21,7 @@ class Admin::HopeShiftsController < ApplicationController
     end
 
     def copy_update #仮登録のシフトを編集する際の記述
+    byebug
 #        @hope_shift = HopeShift.find(params["id"])
 
         shift = Shift.new
@@ -57,8 +58,8 @@ class Admin::HopeShiftsController < ApplicationController
         end 
     end
     
-    def registered #いらない？
-        #byebug
+    def registered
+        byebug
       @hope_shift = HopeShift.find(params["hope_shift_id"])
       @hope_shift.is_registered = true # 確定
       if @hope_shift.update(is_registered: true)
@@ -81,7 +82,7 @@ class Admin::HopeShiftsController < ApplicationController
     def destroy # 希望シフトと仮確定シフトの削除
         @hope_shift = HopeShift.find(params["id"])
         @hope_shift.destroy
-        redirect_to admin_shifts_path
+        redirect_to admin_hope_shifts_path
     end
     
         private

@@ -1,4 +1,4 @@
-<h2>hope_shift admin edit</h2>
+<h2>希望/仮確定シフト編集</h2>
 <%= form_with model: @hope_shift, url:admin_hope_shift_path(@hope_shift.id), method: :patch do |f| %>
   <%= f.date_select :date, {}, class: 'form-control' %>
   <%#= f.datetime_select :start_date, {}, class: 'form-control' %>
