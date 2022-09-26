@@ -1,18 +1,36 @@
 class Public::EndUsersController < ApplicationController
   def index
-   @end_user = EndUser.find(current_end_user.id)
+    @end_user = current_end_user
+    # ログインしているユーザーのshift情報をすべて取得
+    @allShifts = current_end_user.hope_shifts
+    # お知らせフラグをfalse
+    @noticeFlag = false
+    # ログインしているユーザのシフト情報の中に、お知らせフラグがFalseのものがあったら
+    # お知らせフラグをTrueにする
+    @allShifts.each do |hope_shift|
+      @shifts = hope_shift.shifts
+      if @shifts.any? {|shift| !shift.notice_flag }
+        @noticeFlag = true
+      end
+    end
   end
 
   def show
-
+    allShifts = current_end_user.hope_shifts
+    allShifts.each do |hope_shift|
+      shifts = hope_shift.shifts
+      shifts.update(notice_flag: true)
+    end
   end
   
   def edit 
-    @end_user = EndUser.find(current_end_user.id)
+    @end_user = current_end_user
   end
   
   def update
-    @end_user = EndUser.find(current_end_user.id)
+    #byebug
+    @end_user = current_end_user
+    
     if @end_user.update(end_user_params)
        flash[:success] =  "更新に成功しました"
        redirect_to public_end_users_path(current_end_user)

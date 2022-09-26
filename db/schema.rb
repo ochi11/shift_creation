@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_11_090445) do
+ActiveRecord::Schema.define(version: 2022_09_26_111242) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_09_11_090445) do
     t.integer "break_time_start", null: false
     t.integer "break_time_end", null: false
     t.date "date", null: false
-    t.boolean "noteci_flag", default: true, null: false
+    t.boolean "notice_flag", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -22,9 +22,11 @@ class Admin::ShiftsController < ApplicationController
         @shift = Shift.new(shift_params)
         @shift.admin_id = current_admin.id
         
+        
         if @shift.save
           hope_shift = HopeShift.find(@shift.hope_shift_id) 
           hope_shift.update(is_registered: true) # 確定したシフトの作成
+          Shift.update(notice_flag: false)
           flash[:success] = "登録に成功しました"
           redirect_to confirmed_shift_admin_shifts_path(@shift.id)
         else
@@ -94,6 +96,6 @@ class Admin::ShiftsController < ApplicationController
     
     private
   def shift_params
-    params.require(:shift).permit(:admin_id, :hope_shift_id, :working_time_start, :working_time_end, :noteci_flag, :break_time_start, :break_time_end, :date)
+    params.require(:shift).permit(:admin_id, :hope_shift_id, :working_time_start, :working_time_end, :notice_flag, :break_time_start, :break_time_end, :date)
   end
 end

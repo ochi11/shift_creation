@@ -1,5 +1,13 @@
+
+
+
 <div class="show-container" style="width:50%; margin: 20px auto;">
-	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">マイページ</h4>
+	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">マイページ
+		<% if @noticeFlag %>
+	    <i class="fa fa-circle" style="color: gold;"></i>
+	    <% end %>
+    </h4>
+    <p>※シフトが確定されたら、通知マークが表示されます。</p>
 	<h4>登録情報<%= link_to '編集する', end_users_edit_path(@end_user), class:"btn btn-info" %></h4>
 
 	<table class="table table-condensed">
@@ -27,4 +35,8 @@
 			提出する<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの確認（完了するを押したら、通知マークが消えます）</h4>
+		<%= link_to public_end_user_path(@end_user), class:"btn btn-info" do %>
+			完了する<span class="glyphicon glyphicon-chevron-right"></span>
+		<% end %>
 </div>
