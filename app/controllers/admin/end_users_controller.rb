@@ -21,6 +21,13 @@ class Admin::EndUsersController < ApplicationController
     end
   end
   
+  def destroy
+      @end_user = EndUser.find(params[:id]) 
+      @end_user.destroy
+      flash[:notice] = 'ユーザーを削除しました。'
+      redirect_to :root #削除に成功すればrootページに戻る
+  end
+  
       private
 
   def end_user_params
