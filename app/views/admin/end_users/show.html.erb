@@ -30,11 +30,12 @@
 </table>
 <hr>
 　　　　<%= link_to edit_admin_end_user_path do %>
-					<span class="btn btn-info" style="display:inline-block;">編集する</span>
+		  <span class="btn btn-info" style="display:inline-block;">編集する</span>
 		<% end %>
 
-		    <%= link_to admin_end_user_path, method: :delete, "data-confirm" => "本当にデータから消しますか？消すと元に戻せなくなります。" do %>
-		      <span class="btn btn-info", style="display:inline-block;">このユーザーの全ての情報をデータから消す</span>
-		    <% end %>
+           <!-- 消すと元に戻せなくなるので注意 -->
+		<%= link_to admin_end_user_path, method: :delete, "data-confirm" => "本当にデータから消しますか？消すと元に戻せなくなります。" do %>
+		  <span class="btn btn-info", style="display:inline-block;">このユーザーの全ての情報をデータから消す</span>
+		<% end %>
 		    
 </div>

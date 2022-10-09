@@ -11,3 +11,11 @@ Admin.create!(
    email: 'admin@admin',
    password: 'testtest'
 )
+
+EndUser.create!(
+  [
+    {email: 'olivia@test.com', name: 'Olivia', password: 'password'},
+    {email: 'james@test.com', name: 'James', password: 'password'},
+    {email: 'lucas@test.com', name: 'Lucas', password: 'password'}
+  ]
+)
