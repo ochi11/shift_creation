@@ -1,4 +1,6 @@
 class Admin::HopeShiftsController < ApplicationController
+  before_action :authenticate_admin!
+  
   
     def index
       @hope_shifts = HopeShift.where(is_active: true) # これで仮確定してないシフト希望を取得

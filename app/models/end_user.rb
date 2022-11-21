@@ -5,4 +5,9 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :hope_shifts, dependent: :destroy
+  
+    
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 end

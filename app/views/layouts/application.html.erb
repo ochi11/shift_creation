@@ -18,6 +18,11 @@
             <%= render 'layouts/header' %>
         <% end %>
   </header>
+  
+    <%# deivseのフラッシュメッセージを表示 %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  
     <%= yield %>
       
   </body>

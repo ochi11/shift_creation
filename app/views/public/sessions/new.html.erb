@@ -3,6 +3,7 @@
 <p style = "margin-bottom: 20px; padding: 10px; ">会員の方はこちらからログインしてください</p>
 
 <%= form_with model: @end_user, url: end_user_session_path do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />

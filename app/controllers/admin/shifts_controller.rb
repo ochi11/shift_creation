@@ -1,4 +1,7 @@
 class Admin::ShiftsController < ApplicationController
+  before_action :authenticate_admin!
+  
+  
     def index
      @hope_shifts = HopeShift.where(is_active: false).where(is_registered: false) # これで仮確定しているシフト希望を取得
      @shift = Shift.new

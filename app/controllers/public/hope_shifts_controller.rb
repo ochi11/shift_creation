@@ -1,4 +1,6 @@
 class Public::HopeShiftsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:top]
+  
   def index
    @events = [*HopeShift.all, *Shift.all]
   # @events = [*HopeShift.last(1), *Shift.last(1)]
