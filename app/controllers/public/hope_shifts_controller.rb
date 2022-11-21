@@ -25,8 +25,11 @@ class Public::HopeShiftsController < ApplicationController
   def create
     @hope_shift = HopeShift.new(hope_shift_params)
     @hope_shift.end_user_id = current_end_user.id
-    @hope_shift.save
-    redirect_to new_public_hope_shift_path
+    if @hope_shift.save
+      redirect_to new_hope_shift_path
+    else
+      render :new
+    end
   end
 
   def destroy

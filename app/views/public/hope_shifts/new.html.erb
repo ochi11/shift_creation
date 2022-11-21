@@ -1,6 +1,16 @@
 <div class="container" style = "width: 50%; margin: 20px auto;" >
   <h2>シフトの希望日時提出フォーム</h2>
-  <%= form_with model: @hope_shift, url:public_hope_shifts_path, method: :post do |f| %>
+  
+<% if @hope_shift.errors.any? %>
+  <%= @hope_shift.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @hope_shift.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  
+  <%= form_with model: @hope_shift, url:hope_shifts_path, method: :post do |f| %>
     <%#= f.date_select :date, use_month_numbers:true, with_css_classes: true, class: 'form-control' %>
   <h6 style = "margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px; ">
     <%= raw sprintf(

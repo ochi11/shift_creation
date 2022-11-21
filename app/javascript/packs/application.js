@@ -32,7 +32,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
         plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
         //~省略~//
 
-        events: '/public/hope_shifts.json', // <=これを追加。表示させたい画面に。
+        events: '/hope_shifts.json', // <=これを追加。表示させたい画面に。
         // 書き方のルールとしては['/コントローラー名.json']としてください
 
         headerToolbar: {

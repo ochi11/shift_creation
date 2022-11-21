@@ -8,7 +8,7 @@
 	    <% end %>
     </h4>
     <p>※シフトが確定されたら、通知マークが表示されます。</p>
-	<h4>登録情報<%= link_to '編集する', end_users_edit_path(@end_user), class:"btn btn-info" %></h4>
+	<h4>登録情報<%= link_to '編集する', edit_end_user_path(@end_user), class:"btn btn-info" %></h4>
 
 	<table class="table table-condensed">
 		<tbody>
@@ -26,17 +26,17 @@
 
 	<hr>
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの閲覧</h4>
-		<%= link_to public_shifts_path, class:"btn btn-info" do %>
+		<%= link_to shifts_path, class:"btn btn-info" do %>
 			見る<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの希望日時提出</h4>
-		<%= link_to new_public_hope_shift_path, class:"btn btn-info" do %>
+		<%= link_to new_hope_shift_path, class:"btn btn-info" do %>
 			提出する<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 	<hr>
 		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">シフトの確認（完了するを押したら、通知マークが消えます）</h4>
-		<%= link_to public_end_user_path(@end_user), class:"btn btn-info" do %>
+		<%= link_to end_user_path(@end_user), class:"btn btn-info" do %>
 			完了する<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 </div>

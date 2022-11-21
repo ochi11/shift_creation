@@ -33,7 +33,7 @@ class Public::EndUsersController < ApplicationController
     
     if @end_user.update(end_user_params)
        flash[:success] =  "更新に成功しました"
-       redirect_to public_end_users_path(current_end_user)
+       redirect_to end_users_path(current_end_user)
     else
        flash[:warning] = "入力内容を確認してください"
        render :edit

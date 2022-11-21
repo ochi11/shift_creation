@@ -13,7 +13,7 @@
       	<% elsif end_user_signed_in? && !current_end_user.is_deleted %>
       			<p style="text-align:right; padding: 10px 10px 0 0; color:#694D49;">
       				ようこそ、
-      				<%= link_to current_end_user.name, public_end_users_path %>
+      				<%= link_to current_end_user.name, end_users_path %>
       				さん
       			</p>
       	<% end %>
@@ -21,7 +21,7 @@
       <div id="box" style="margin: 0 auto 20px; text-align: center;">
         <% if end_user_signed_in? && current_end_user %>
         <!-- ログイン時表示される内容-->
-          <%= link_to "マイページ", public_end_users_path, class:"btn btn-primary text-dark bg-light" %>
+          <%= link_to "マイページ", end_users_path, class:"btn btn-primary text-dark bg-light" %>
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class:"btn btn-primary text-dark bg-light" %>
         <% else %>
         <!-- ログアウト時に表示される内容 -->
