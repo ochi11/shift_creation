@@ -14,4 +14,8 @@ class Shift < ApplicationRecord
   
   def end_user
   end
+  
+  validates :break_time_start, presence: true
+  validates :break_time_end, presence: true
+  
 end

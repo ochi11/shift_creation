@@ -1,7 +1,18 @@
 <!-- 仮確定シフト一覧画面 -->
+
+<% if @shift.errors.any? %>
+  <%= @shift.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @shift.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="row" style="width:60%; margin:0 auto;">
 <h4>仮確定シフト一覧</h4>
-  
+
+  <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>  
     <table class="table table-bordered">
     	<tr>
     		<th>希望者</th>
@@ -15,7 +26,7 @@
     	</tr>
   
       <% @hope_shifts.each do |hope_shift| %>
-        <%= form_with model: @shift, url:admin_shifts_path, method: :post do |f| %>
+        
       	<tr>
       		<td><%= hope_shift.end_user.name %></td>
       		<%= f.hidden_field :hope_shift_id, :value => hope_shift.id %>
@@ -39,8 +50,8 @@
             <td><%= link_to "削除する", admin_hope_shift_path(hope_shift.id), method: :delete %></td>
       	 </tr>
           <% end %>
-          </table>
-       <% end %>
+    </table>
+  <% end %>
 </div>
 
 <div id="calendar"></div> <!-- カレンダーを特定のページに読み込ませる -->

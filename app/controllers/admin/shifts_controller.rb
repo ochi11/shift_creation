@@ -35,6 +35,9 @@ class Admin::ShiftsController < ApplicationController
         else
           flash[:warning] = "入力内容を確認してください"
           redirect_to admin_shifts_path(@shift.id)
+          
+          #@hope_shifts = HopeShift.where(is_active: false).where(is_registered: false)
+          #render :index
         end
     end
     
